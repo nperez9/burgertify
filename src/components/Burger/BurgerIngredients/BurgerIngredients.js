@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import classes from './BurgerIngredients.css';
 
-const validTypes = ['bread-bottom', 'bread-top', 'meat', 'cheese', 'bacon'];
+const validTypes = ['bread-bottom', 'bread-top', 'meat', 'cheese', 'salad', 'bacon'];
 
 const burgerIngredients = ({ type }) => {
   let ingredient = null;
