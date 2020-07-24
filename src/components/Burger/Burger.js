@@ -4,11 +4,16 @@ import classes from './Burger.css';
 import BurgerIngredients from './BurgerIngredients/BurgerIngredients';
 
 const burger = ({ ingredients }) => {
-  const parsedIngredients = Object.keys(ingredients).map((ingKey) => {
+  let parsedIngredients = Object.keys(ingredients).map((ingKey) => {
     return [...Array(ingredients[ingKey])].map((_, i) => {
-      return <BurgerIngredients type={ingKey} key={ingredients[ingKey] + i} />;
+      return <BurgerIngredients type={ingKey} key={ingKey + i} />;
     });
-  });
+  })
+  .reduce((arr, elem) => arr.concat(elem), []);
+
+  if (!parsedIngredients.length) {
+    parsedIngredients = <p>Plase, start adding ingredients</p>
+  }
 
   return (
     <div className={classes.Burger}>
