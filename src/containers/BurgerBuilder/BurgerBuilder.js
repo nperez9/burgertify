@@ -7,9 +7,8 @@ const INGREDIENTS_PRICE = {
   salad: 0.5,
   bacon: 1,
   cheese: 0.5,
-  meat: 2
-}
-
+  meat: 2,
+};
 
 const BurgerBuilder = () => {
   const [ingredients, setIngredents] = useState({
@@ -26,10 +25,10 @@ const BurgerBuilder = () => {
     setIngredents(newIngredients);
     const price = totalPrice + INGREDIENTS_PRICE[type];
     setTotalPrice(price);
-  }
+  };
 
   const subtractIngredientHandler = (type) => {
-    const newIngredients = {...ingredients};
+    const newIngredients = { ...ingredients };
     if (newIngredients[type] === 0) {
       alert(`You can't substract ${type} ingredient`);
       return;
@@ -38,15 +37,20 @@ const BurgerBuilder = () => {
     setIngredents(newIngredients);
     const price = totalPrice - INGREDIENTS_PRICE[type];
     setTotalPrice(price);
-  }
+  };
 
+  const disableInfo = {
+    ...ingredients,
+  };
+  for (let key in disableInfo) {
+    disableInfo[key] = ingredients[key] <= 0;
+  }
+  
   return (
     <>
       <Burger ingredients={ingredients} />
-      <BuildControls 
-        addIngredient={addIngredientHandler}
-        subtractIngredient={subtractIngredientHandler} 
-      />
+      <BuildControls addIngredient={addIngredientHandler} subtractIngredient={subtractIngredientHandler} 
+      disabledControls={disableInfo} />
       <div>{totalPrice}</div>
     </>
   );

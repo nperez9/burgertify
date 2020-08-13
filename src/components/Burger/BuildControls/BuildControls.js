@@ -12,14 +12,15 @@ const controls = [
   { label: 'Meat', type: INGREDIENTS.Meat },
 ];
 
-const buildControls = ({ addIngredient, subtractIngredient }) => {
+const buildControls = ({ addIngredient, subtractIngredient, disabledControls }) => {
   const componentControls = controls.map((control) => {  
     return (
       <BuildControl 
         key={control.label} 
         label={control.label} 
         add={() => { addIngredient(control.type) } }   
-        subtract={() => { subtractIngredient(control.type) } }   
+        subtract={() => { subtractIngredient(control.type) } }
+        disable={disabledControls[control.type]}   
       />
     );
   });
@@ -34,6 +35,7 @@ const buildControls = ({ addIngredient, subtractIngredient }) => {
 buildControls.propTypes = {
   addIngredient: PropTypes.func.isRequired,
   subtractIngredient: PropTypes.func.isRequired,
+  disabledControls: PropTypes.object,
 };
 
 export default buildControls;
