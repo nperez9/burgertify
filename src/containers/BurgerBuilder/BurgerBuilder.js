@@ -45,12 +45,16 @@ const BurgerBuilder = () => {
   for (let key in disableInfo) {
     disableInfo[key] = ingredients[key] <= 0;
   }
-  
+
   return (
     <>
       <Burger ingredients={ingredients} />
-      <BuildControls addIngredient={addIngredientHandler} subtractIngredient={subtractIngredientHandler} 
-      disabledControls={disableInfo} />
+      <BuildControls
+        addIngredient={addIngredientHandler}
+        subtractIngredient={subtractIngredientHandler}
+        disabledControls={disableInfo}
+        price={totalPrice}
+      />
       <div>{totalPrice}</div>
     </>
   );
