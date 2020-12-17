@@ -12,7 +12,14 @@ const controls = [
   { label: 'Meat', type: INGREDIENTS.Meat },
 ];
 
-const buildControls = ({ addIngredient, subtractIngredient, disabledControls, price, isPurchasable }) => {
+const buildControls = ({ 
+  addIngredient,
+  subtractIngredient,
+  disabledControls,
+  price,
+  isPurchasable,
+  showModalHandler
+}) => {
   const componentControls = controls.map((control) => {  
     return (
       <BuildControl 
@@ -27,14 +34,17 @@ const buildControls = ({ addIngredient, subtractIngredient, disabledControls, pr
 
   return (
     <div className={classes.BuildControls}>
-      <p>Current Price: {price} </p>
-      {componentControls}
-      <button
-        disabled={!isPurchasable}
-        className={classes.OrderButton}
-      >
-        ORDER NOW
-      </button>
+      <div className={classes.BuildControlsContainer}>
+        <p>Current Price: {price} </p>
+        {componentControls}
+        <button
+          disabled={!isPurchasable}
+          className={classes.OrderButton}
+          onClick={showModalHandler}
+        >
+          ORDER NOW
+        </button>
+      </div>
     </div>
   );
 };
@@ -42,6 +52,7 @@ const buildControls = ({ addIngredient, subtractIngredient, disabledControls, pr
 buildControls.propTypes = {
   addIngredient: PropTypes.func.isRequired,
   subtractIngredient: PropTypes.func.isRequired,
+  showModalHandler: PropTypes.func.isRequired,
   disabledControls: PropTypes.object.isRequired,
   price: PropTypes.number.isRequired,
   isPurchasable: PropTypes.bool.isRequired,
