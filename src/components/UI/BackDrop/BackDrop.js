@@ -1,9 +1,18 @@
 import React from 'react';
+import classes from './BackDrop.css';
+import PropTypes from 'prop-types';
 
-const BackDrop = () => (
-  <div>
-    this is the backdrop
-  </div>
-);
+const BackDrop = ({ show, click }) => {
+  let render = null;
+  if (show) {
+    render = <div className={classes.Backdrop} onClick={click}></div>
+  }
+  return render;
+}
+
+BackDrop.propTypes = {
+  show: PropTypes.bool,
+  click: PropTypes.func.isRequired,
+}
 
 export default BackDrop;

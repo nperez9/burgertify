@@ -66,7 +66,10 @@ const BurgerBuilder = () => {
 
   return (
     <>
-      <Modal show={isOrdered}>
+      <Modal 
+        show={isOrdered} 
+        closeHandler={() => showModalHandler(false)}
+      >
         <OrderSummary ingredients={ingredients} />
       </Modal>
       <Burger ingredients={ingredients} />
