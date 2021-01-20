@@ -57,6 +57,10 @@ const BurgerBuilder = () => {
     setIsOrdered(show);
   }
 
+  const purchaseBurgerHandler = () => {
+    alert('you r buying a burger');
+  }
+
   const disableInfo = {
     ...ingredients,
   };
@@ -70,7 +74,12 @@ const BurgerBuilder = () => {
         show={isOrdered} 
         closeHandler={() => showModalHandler(false)}
       >
-        <OrderSummary ingredients={ingredients} />
+        <OrderSummary 
+          ingredients={ingredients}
+          cancelHandler={() => showModalHandler(false)}
+          successHandler={() => purchaseBurgerHandler()}
+          price={totalPrice}
+        />
       </Modal>
       <Burger ingredients={ingredients} />
       <BuildControls

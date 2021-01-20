@@ -7,9 +7,12 @@ const validTypes = [
   'Danger',
 ];
 
-const Button = ({ type, children }) => {
+const Button = ({ type, children, click }) => {
   return (
-    <button className={[classes.Button, classes[type]].join(' ')}>
+    <button 
+      className={[classes.Button, classes[type]].join(' ')}
+      onClick={click}
+    >
       {children}
     </button>
   );
