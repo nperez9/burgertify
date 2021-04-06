@@ -2,7 +2,7 @@ import React from 'react';
 import classes from './BackDrop.css';
 import PropTypes from 'prop-types';
 
-const BackDrop = ({ show, click }) => {
+const BackDrop = ({ show, click, children }) => {
   let render = null;
   if (show) {
     render = <div className={classes.Backdrop} onClick={click}></div>

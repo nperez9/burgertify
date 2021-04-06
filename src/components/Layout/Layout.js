@@ -1,18 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import classes from './Layout.css';
 
 import Toolbar from '../Navigation/Toolbar/Toolbar';
 import SideDrawer from '../Navigation/SideDrawer/SideDrawer';
 
-const layout = ({ children }) => {
+const Layout = ({ children }) => {
+  const [isSideDrawOpen, setIsSideDrawOpen] = useState(false);
+  
+  const sideDrawHanlder = (isOpen) => {
+    console.log(isOpen)
+    setIsSideDrawOpen(isOpen);
+  }
+
   return (
     <>
-      <Toolbar />
-      <SideDrawer />
+      <Toolbar openSideDraw={() => {sideDrawHanlder(true)}} />
+      <SideDrawer isOpen={isSideDrawOpen} close={() => {sideDrawHanlder(false)}}/>
       <main className={classes.content}>{ children }</main>
     </>
   )
 }
 
-export default layout;
+export default Layout;

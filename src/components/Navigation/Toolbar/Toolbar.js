@@ -4,11 +4,13 @@ import classes from './Toolbar.css';
 import Logo from '../../Logo/Logo';
 import NavigationItems from '../NavigationItems/NavigationItems';
 
-const Toolbar = () => (
+const Toolbar = ({ openSideDraw }) => (
   <header className={classes.Toolbar}>
-    <div>Menu</div>
+    <div onClick={openSideDraw}>
+      Menu
+    </div>
     <Logo height="80%"/>
-    <nav>
+    <nav className={classes.DesktopOnly}>
       <NavigationItems />
     </nav>
   </header>
