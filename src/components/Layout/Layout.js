@@ -9,7 +9,6 @@ const Layout = ({ children }) => {
   const [isSideDrawOpen, setIsSideDrawOpen] = useState(false);
   
   const sideDrawHanlder = (isOpen) => {
-    console.log(isOpen)
     setIsSideDrawOpen(isOpen);
   }
 
